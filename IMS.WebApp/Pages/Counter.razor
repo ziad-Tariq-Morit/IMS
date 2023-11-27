@@ -1,4 +1,5 @@
 ﻿@page "/counter"
+@using IMS.CoreBusiness;
 
 @inject IViewinventoriesByNameUseCases ViewinventoriesByNameUseCases
 <PageTitle>Counter</PageTitle>
@@ -9,14 +10,18 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
  <br />
-   <ViewInventoriesComponent></ViewInventoriesComponent>
+<ViewInventoriesComponent OnSearchInventories="OnSearchInventories"></ViewInventoriesComponent>
 @code {
     private int currentCount = 0;
 
-    
+
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+    private void OnSearchInventories(List<Inventory> inventories)
+    {
+        
     }
 }
