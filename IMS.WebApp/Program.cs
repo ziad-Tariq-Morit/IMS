@@ -1,5 +1,6 @@
 using IMS.Plugins.EFCore;
 using IMS.UseCases;
+using IMS.UseCases.PluginInterfases;
 using IMS.WebApp.Areas.Identity;
 using IMS.WebApp.Data;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -25,10 +26,11 @@ builder.Services.AddDbContext<IMSContext>(options =>
     options.UseInMemoryDatabase("IMS");
 
 });
-//DI repositories
-builder.Services.AddTransient<InventoryRepository, InventoryRepository>();
-//DI Use cases
+// DI repositories
+builder.Services.AddTransient<IInventoryRepository, InventoryRepository>();
+// DI Use cases
 builder.Services.AddTransient<IViewinventoriesByNameUseCases, ViewinventoriesByNameUseCases>();
+
 var app = builder.Build();
 
 var scope = app.Services.CreateScope();
